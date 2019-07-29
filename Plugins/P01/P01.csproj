@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <Description>Plugin test</Description>
+    <Copyright>TWSM 2019</Copyright>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\0\Apps\ApStudio5\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UserList.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\AppBase0500\AppBase0500.csproj" />
+  </ItemGroup>
+
+</Project>

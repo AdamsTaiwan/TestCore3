@@ -1,0 +1,26 @@
+﻿<Window x:Class="AppBase0500.WindowStat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" MinHeight="110" MinWidth="300"
+        Title="{Binding Title}" Height="110" Width="300" 
+        Left="{Binding Left}" Top="{Binding Top}" Style="{DynamicResource ThemeWinBase}">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo ProgressState="{Binding ProgressState}" ProgressValue="{Binding ProgressValue}"  />
+    </Window.TaskbarItemInfo>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Text="{Binding Status}" Style="{StaticResource tbHighlight}" TextTrimming="CharacterEllipsis"/>
+        <ProgressBar Grid.Row="1" Grid.ColumnSpan="2" Margin="4" Height="20" Value="{Binding Progress}" IsIndeterminate="{Binding IsIndeterminate}"/>
+        <Button x:FieldModifier="public" Name="btnCancel" Grid.Row="2" Grid.Column="1" Content="Cancel" Height="20" Width="80" Margin="4"/>
+    </Grid>
+</Window>

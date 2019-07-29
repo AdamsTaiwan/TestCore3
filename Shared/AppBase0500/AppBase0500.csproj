@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!--<NullableContextOptions>enable</NullableContextOptions>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controls\UserContainer.xaml" />
+    <None Remove="Themes\Dark.xaml" />
+    <None Remove="Themes\Light.xaml" />
+    <None Remove="Views\WindowStat.xaml" />
+  </ItemGroup>
+
+</Project>
