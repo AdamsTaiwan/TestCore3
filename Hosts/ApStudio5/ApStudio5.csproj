@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>C:\0\Apps\ApStudio5\</OutputPath>
+    <OutputPath>..\..\App\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
