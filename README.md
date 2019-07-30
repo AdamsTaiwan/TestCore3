@@ -1,7 +1,7 @@
 # TestCore3
 Solution to test on Core 3
 
-This solution currently work worked with Core 3 Preview 6 with 0 errors/warnings.
+This solution worked with Core 3 Preview 6 with 0 errors/warnings.
 After removing Preview 6 and installing Preview 7 the following errors occurred even after rebooting windows, removing obj/bin folders, do a solution clean, nuget restore and rebuild.
 
 ```
@@ -30,4 +30,4 @@ After removing Preview 6 and installing Preview 7 the following errors occurred 
 ```
 
 the Output is same with both with Vs2019 16.2 and 16.3 and on different machines.
-I left the solution with the errors as is.  While debugging I commented out the error code and tried to solve each problem but without success.
+I left the solution with the errors as is.  While debugging, I commented out the error code and tried to solve each problem but without success.
