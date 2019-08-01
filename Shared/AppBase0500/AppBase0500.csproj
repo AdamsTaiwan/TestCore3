@@ -14,4 +14,8 @@
     <None Remove="Views\WindowStat.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0-preview7.19362.9" />
+  </ItemGroup>
+
 </Project>
