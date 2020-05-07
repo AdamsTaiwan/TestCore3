@@ -86,8 +86,8 @@ namespace AppBase0500
                 GetAllConfig();
 
                 var wa = System.Windows.Forms.Screen.GetWorkingArea(new System.Drawing.Point());
-                this.workspaceHeight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
-                this.workspaceWidth = wa.Location.X + System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+                //this.workspaceHeight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+                //this.workspaceWidth = wa.Location.X + System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
                 //this.Window_Closing += Window_Closing();
                 //this.SizeChanged += Window_SizeChanged;
 

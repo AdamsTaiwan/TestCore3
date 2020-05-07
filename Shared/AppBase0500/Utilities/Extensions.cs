@@ -207,19 +207,19 @@ namespace AppBase0500
 
         public static string GetFolder(string defaultFolder, string desc)
         {
-            var folderBrowser = new System.Windows.Forms.FolderBrowserDialog
-            {
-                Description = desc,
-                SelectedPath = defaultFolder
-            };
-            if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                return folderBrowser.SelectedPath;
-            }
-            else
-            {
+            //var folderBrowser = new System.Windows.Forms.FolderBrowserDialog
+            //{
+            //    Description = desc,
+            //    SelectedPath = defaultFolder
+            //};
+            //if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    return folderBrowser.SelectedPath;
+            //}
+            //else
+            //{
                 return defaultFolder;
-            }
+            //}
         }
 
         //retrieves the datetime WITHOUT loading the whole image
