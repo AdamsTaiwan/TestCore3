@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Device.Gpio;
 using System.Device.I2c;
+using System.IO;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
@@ -52,6 +53,9 @@ namespace appPI
             string portName = "/dev/ttyACM0";
             int baudRate = 9600;
             var finished = false;
+            string lastTemp = "a", temp;
+            DateTime now;
+            string nl = Environment.NewLine;
 
             using (SerialPort sp = new SerialPort(portName))
             {
@@ -74,6 +78,11 @@ namespace appPI
 
                     Console.WriteLine("Type '!q' or Ctrl-C to exit...");
 
+                    if (!Directory.Exists("App_Data"))
+                    {
+                        Directory.CreateDirectory("App_Data");
+                    }
+
                     while (!finished)
                     {
                         //var line = Console.ReadKey();
@@ -84,14 +93,26 @@ namespace appPI
                         // if RATE is set to really high Arduino may fail to respond in time
                         // then on the next command you might get an old message
                         // ReadExisting will read everything from the internal buffer
-                        string existingData = sp.ReadExisting();
-                        Console.WriteLine($"-{DateTime.Now:HH:mm:ss.fffff} {existingData}");
-                        if (!existingData.Contains('\n') && !existingData.Contains('\r'))
+                        temp = sp.ReadExisting().Trim();
+                        now = DateTime.Now;
+                        if (temp.Length > 1 && temp != lastTemp)
+                        {
+                            Console.WriteLine($"-{DateTime.Now:HH:mm:ss.fffff} {temp}");
+                            File.AppendAllText(Path.Combine("App_Data", $"{now:yyyyMMdd}.log"), $"{now:HHmmss},{temp}{nl}");
+                            lastTemp = temp;
+                        }
+                        if (!temp.Contains('\n') && !temp.Contains('\r'))
                         {
                             // we didn't get the response yet, let's wait for it then
                             try
                             {
-                                Console.WriteLine($"+{DateTime.Now:HH:mm:ss.fffff} {sp.ReadLine()}");
+                                temp = sp.ReadLine();
+                                Console.WriteLine($"+{DateTime.Now:HH:mm:ss.fffff} {temp}");
+                                if (temp.Length > 1 && temp != lastTemp)
+                                {
+                                    File.AppendAllText(Path.Combine("App_Data", $"{now:yyyyMMdd}.log"), $"{now:HHmmss},{temp}{nl}");
+                                    lastTemp = temp;
+                                }
                             }
                             catch (TimeoutException)
                             {
@@ -103,7 +124,7 @@ namespace appPI
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error {ex.Message}");
-                    if (sp?.IsOpen== true)
+                    if (sp?.IsOpen == true)
                     {
                         sp.Close();
                     }
